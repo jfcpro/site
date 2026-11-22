@@ -398,7 +398,14 @@ h2 em { background: linear-gradient(var(--mark), var(--mark)) no-repeat 0 88% / 
 :root[data-theme="dark"] .prix { color: var(--fg); }
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .prix { color: var(--fg); } }
 .prix small { font-size: .9rem; font-weight: 600; color: var(--muted); letter-spacing: .04em; }
-.btn.bientot { background: var(--line); color: var(--muted); box-shadow: none; pointer-events: none; }
 .cat-note { color: var(--muted); font-size: .9rem; margin-top: 2rem; max-width: 70ch; }
 .cat-note + .cat-note { margin-top: .8rem; }
 .top .nav a + a { margin-left: .2rem; }
+.commande { margin-top: clamp(3.5rem, 8vw, 6rem); padding: clamp(1.6rem, 4vw, 3rem); background: var(--bg-alt); border: 1px solid var(--line); border-radius: 26px; }
+.commande h2 { font-size: clamp(1.8rem, 4vw, 2.6rem); }
+.commande .form { margin-top: 2rem; }
+.cgv-ok { grid-column: 1 / -1; display: flex; gap: .7rem; align-items: flex-start; font-size: .93rem; color: var(--muted); }
+.cgv-ok input { width: 1.2rem; height: 1.2rem; margin-top: .25rem; accent-color: var(--bordeaux); flex: none; }
+.f.cgv-ok input[type=checkbox] { width: 1.2rem; height: 1.2rem; padding: 0; flex: none; }
+.f.cgv-ok { display: flex; }
+@media (max-width: 520px) { .top .nav { gap: 1rem; white-space: nowrap; } .top .nav a { font-size: .85rem; } }
