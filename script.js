@@ -66,6 +66,20 @@
   window.addEventListener('resize', onScroll);
   onScroll();
 
+  // Menu sur téléphone
+  var burger = document.querySelector('.burger'), menu = document.getElementById('menu');
+  if (burger && menu) {
+    var setMenu = function (o) {
+      menu.classList.toggle('open', o);
+      burger.setAttribute('aria-expanded', o ? 'true' : 'false');
+      burger.setAttribute('aria-label', o ? 'Fermer le menu' : 'Ouvrir le menu');
+    };
+    burger.addEventListener('click', function () { setMenu(!menu.classList.contains('open')); });
+    menu.addEventListener('click', function (e) { if (e.target.closest('a')) setMenu(false); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && menu.classList.contains('open')) { setMenu(false); burger.focus(); } });
+    document.addEventListener('click', function (e) { if (menu.classList.contains('open') && !e.target.closest('.top')) setMenu(false); });
+  }
+
   // Formulaire : nom des fichiers choisis, limite de 10 Mo au total
   var form = document.getElementById('formulaire');
   if (form) {
