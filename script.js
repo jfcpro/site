@@ -147,3 +147,9 @@
     });
   }
 })();
+
+/* Catalogue : bouton « Acheter » vers le lien Payrexx, sinon « Bientôt disponible » */
+document.querySelectorAll("[data-paiement]").forEach(function (b) {
+  var lien = b.getAttribute("data-paiement");
+  if (lien) { b.href = lien; } else { b.classList.add("bientot"); b.setAttribute("aria-disabled", "true"); b.querySelector("span").textContent = "Bientôt disponible"; }
+});
