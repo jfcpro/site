@@ -39,7 +39,7 @@
   <div class="wrap">
     <p class="eyebrow">Catalogue</p>
     <h1>Des cours prêts à donner.</h1>
-    <p class="intro">Chaque cours est livré complet : présentation, supports et exercices, aux formats Word, PowerPoint et Excel, modifiables pour votre usage interne. Vous commandez en ligne, vous payez la QR-facture par TWINT ou e-banking, et vous recevez un lien de téléchargement personnel par e-mail.</p>
+    <p class="intro">Chaque cours est livré complet : présentation, supports et exercices, aux formats Word, PowerPoint et Excel, modifiables pour votre usage interne. Vous commandez en ligne, vous recevez aussitôt la facture avec QR-code par e-mail, vous la payez par TWINT ou e-banking, puis vous recevez un lien de téléchargement personnel.</p>
     <ol class="cat-etapes" aria-label="Comment ça marche">
       <li><b>1</b>Commandez un cours</li>
       <li><b>2</b>Payez la QR-facture par TWINT ou e-banking</li>
@@ -91,7 +91,7 @@
     </div>
     <section class="commande" id="commande" aria-labelledby="t-commande">
       <h2 id="t-commande">Commander un cours</h2>
-      <p class="intro">Vous recevez sous 48 heures une facture avec QR-code, payable par TWINT (en scannant le QR-code) ou par e-banking. Le lien de téléchargement suit dès réception du paiement.</p>
+      <p class="intro">Vous recevez aussitôt par e-mail une facture avec QR-code, payable par TWINT (en scannant le QR-code) ou par e-banking. Le lien de téléchargement suit dès réception du paiement.</p>
       <form class="form" id="form-commande" data-envoi="https://script.google.com/macros/s/AKfycbzuB1uBzFcflEqI8S1LlohgeTx-zHVfiCB1JsFnDTUH2aLfwD7G528lyKwj_paPhCCC/exec">
         <input type="hidden" name="Type" value="Commande">
         <div class="honey" aria-hidden="true"><label for="k-hp">Ne pas remplir</label><input id="k-hp" name="_honey" tabindex="-1" autocomplete="off"></div>
@@ -104,7 +104,9 @@
         <div class="f f2"><label for="k-nom">Nom et prénom <b>*</b></label><input id="k-nom" name="Nom" required autocomplete="name"></div>
         <div class="f f2"><label for="k-ent">Entreprise <small>(facultatif)</small></label><input id="k-ent" name="Entreprise" autocomplete="organization"></div>
         <div class="f"><label for="k-mail">E-mail <b>*</b> <small>(le lien de téléchargement arrive ici)</small></label><input id="k-mail" name="email" type="email" required autocomplete="email"></div>
-        <div class="f"><label for="k-adr">Adresse de facturation <b>*</b></label><textarea id="k-adr" name="Adresse" rows="3" required autocomplete="street-address" placeholder="Rue et numéro&#10;NPA et localité"></textarea></div>
+        <div class="f"><label for="k-rue">Rue et numéro <b>*</b> <small>(adresse de facturation)</small></label><input id="k-rue" name="Rue" required maxlength="70" autocomplete="address-line1"></div>
+        <div class="f f2"><label for="k-npa">NPA <b>*</b></label><input id="k-npa" name="NPA" required maxlength="16" inputmode="numeric" autocomplete="postal-code"></div>
+        <div class="f f2"><label for="k-loc">Localité <b>*</b></label><input id="k-loc" name="Localite" required maxlength="35" autocomplete="address-level2"></div>
         <div class="f"><label for="k-rem">Remarque <small>(facultatif)</small></label><textarea id="k-rem" name="Remarque" rows="2"></textarea></div>
         <label class="f cgv-ok"><input type="checkbox" required> <span>J'ai lu et j'accepte les <a href="cgv.html" target="_blank">conditions de vente</a>, y compris l'absence de remboursement une fois le cours livré.</span></label>
         <p class="file-msg" id="k-msg" role="status"></p>
