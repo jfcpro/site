@@ -66,6 +66,36 @@
   window.addEventListener('resize', onScroll);
   onScroll();
 
+  // Formulaire : nom des fichiers choisis, limite de 10 Mo au total
+  var form = document.getElementById('formulaire');
+  if (form) {
+    var msg = document.getElementById('file-msg');
+    var inputs = form.querySelectorAll('input[type=file]');
+    var MAX = 10 * 1024 * 1024;
+    function check() {
+      var total = 0;
+      inputs.forEach(function (i) {
+        var f = i.files && i.files[0], lab = i.closest('.file'), name = lab.querySelector('.file-name');
+        lab.classList.toggle('has', !!f);
+        name.textContent = f ? f.name : name.getAttribute('data-vide');
+        if (f) total += f.size;
+      });
+      var ok = total <= MAX;
+      msg.textContent = ok ? '' : 'Les fichiers pèsent ' + (total / 1048576).toFixed(1) + ' Mo. Le maximum est de 10 Mo au total : retirez un fichier ou envoyez-le par e-mail.';
+      return ok;
+    }
+    inputs.forEach(function (i) { i.addEventListener('change', check); });
+    form.addEventListener('submit', function (e) {
+      if (!check()) { e.preventDefault(); msg.scrollIntoView({ block: 'center' }); return; }
+      var b = form.querySelector('button[type=submit]');
+      b.disabled = true; b.querySelector('span').textContent = 'Envoi en cours…';
+    });
+    window.addEventListener('pageshow', function () {
+      var b = form.querySelector('button[type=submit]');
+      b.disabled = false; b.querySelector('span').textContent = 'Envoyer ma demande';
+    });
+  }
+
   // Accroche : la lueur dorée et l'anneau suivent le pointeur
   if (hero && !calm && window.matchMedia('(hover: hover)').matches) {
     hero.addEventListener('pointermove', function (e) {

@@ -227,19 +227,55 @@ h2 em { background: linear-gradient(var(--mark), var(--mark)) no-repeat 0 88% / 
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .path b { color: var(--fg); } }
 :root[data-theme="dark"] .path b { color: var(--fg); }
 
-/* Contact */
-.contact { position: relative; overflow: hidden; background: radial-gradient(110% 90% at 12% 100%, #A32F54 0%, var(--hero-bg) 55%, #4A0F22 100%); color: var(--hero-fg); padding-block: clamp(5rem, 12vw, 9rem); }
-.contact-ring { position: absolute; right: -8%; bottom: -34%; width: min(70vw, 620px); color: rgba(246, 230, 234, .09); pointer-events: none; rotate: calc(var(--cr, 0) * 1deg); }
-.contact-in { position: relative; }
+/* Contact : texte à gauche, formulaire à droite */
+.contact { position: relative; overflow: hidden; background: radial-gradient(110% 90% at 12% 100%, #A32F54 0%, var(--hero-bg) 55%, #4A0F22 100%); color: var(--hero-fg); padding-block: clamp(5rem, 11vw, 8.5rem); }
+.contact-ring { position: absolute; left: -10%; bottom: -30%; width: min(70vw, 620px); color: rgba(246, 230, 234, .08); pointer-events: none; rotate: calc(var(--cr, 0) * 1deg); }
+.contact-in { position: relative; display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: clamp(2rem, 5vw, 5rem); align-items: start; }
+.contact-text { position: sticky; top: 110px; }
 .contact .eyebrow { color: var(--dore); }
-.contact h2 { max-width: 18ch; }
-.contact h2 em { background: none; }
-.contact .intro { color: rgba(255, 247, 248, .82); }
-.mail { display: inline-flex; align-items: center; gap: .3em; margin-top: 2.2rem; text-decoration: none; font-weight: 800; font-size: clamp(1.9rem, 8.4vw, 6.4rem); letter-spacing: -0.045em; line-height: 1; color: var(--dore); overflow-wrap: anywhere; }
-.mail span { background: linear-gradient(currentColor, currentColor) no-repeat 0 100% / 0 .06em; transition: background-size .6s var(--ease); padding-bottom: .1em; }
-.mail:hover span { background-size: 100% .06em; }
-.mail svg { width: .62em; height: .62em; flex: none; transition: transform .4s var(--ease); }
+.contact h2 em { font-family: var(--serif); font-style: italic; font-weight: 400; font-size: 1.15em; letter-spacing: -0.01em; color: var(--dore); background: none; }
+.contact .intro { color: rgba(255, 247, 248, .85); }
+.mail { display: inline-flex; align-items: center; gap: .3em; margin-top: 2rem; text-decoration: none; font-weight: 700; font-size: clamp(1.4rem, 2.6vw, 2.1rem); letter-spacing: -0.03em; line-height: 1.1; color: var(--dore); overflow-wrap: anywhere; }
+.mail span { background: linear-gradient(currentColor, currentColor) no-repeat 0 100% / 0 2px; transition: background-size .6s var(--ease); padding-bottom: .12em; }
+.mail:hover span { background-size: 100% 2px; }
+.mail svg { width: .7em; height: .7em; flex: none; transition: transform .4s var(--ease); }
 .mail:hover svg { transform: translate(.1em, -.1em); }
+.region { margin-top: .9rem; font-size: .92rem; opacity: .75; }
+.form { background: var(--card); color: var(--fg); border-radius: 26px; padding: clamp(1.4rem, 3vw, 2.4rem); display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.05rem 1rem; box-shadow: 0 40px 80px -40px rgba(0, 0, 0, .6); min-width: 0; }
+.f { grid-column: 1 / -1; display: grid; gap: .35rem; min-width: 0; margin: 0; padding: 0; border: 0; }
+.f2 { grid-column: span 1; }
+.f label, .f legend { font-size: .8rem; font-weight: 600; letter-spacing: .02em; color: var(--muted); padding: 0; }
+.f label b { color: var(--bordeaux-2); font-weight: 700; }
+.f legend { margin-bottom: .45rem; }
+.f legend small { font-weight: 400; }
+.f input:not([type=file]), .f select, .f textarea { font: inherit; font-size: 1rem; color: var(--fg); background: var(--bg); border: 1.5px solid var(--line); border-radius: 12px; padding: .75rem .9rem; width: 100%; min-width: 0; transition: border-color .25s, box-shadow .25s; }
+.f textarea { resize: vertical; min-height: 7.5rem; }
+.f input:focus, .f select:focus, .f textarea:focus { outline: none; border-color: var(--bordeaux-2); box-shadow: 0 0 0 4px color-mix(in srgb, var(--dore) 35%, transparent); }
+.f ::placeholder { color: var(--muted); opacity: .7; }
+.honey { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+.file-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .6rem; }
+.file { position: relative; display: flex; align-items: center; gap: .6rem; border: 1.5px dashed var(--line); border-radius: 12px; padding: .8rem .85rem; cursor: pointer; min-width: 0; transition: border-color .25s, background .25s; }
+.file:hover, .file:focus-within { border-color: var(--dore); background: var(--dore-pale); }
+.file input { position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; }
+.file-ico { flex: none; width: 1.7rem; height: 1.7rem; border-radius: 50%; display: grid; place-items: center; background: var(--rose); color: var(--bordeaux); font-weight: 700; line-height: 1; transition: background .25s, transform .4s var(--ease); }
+.file-name { font-size: .88rem; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0; }
+.file.has { border-style: solid; border-color: var(--dore); background: var(--dore-pale); }
+.file.has .file-ico { background: var(--dore); color: var(--nuit); transform: rotate(45deg); }
+.file.has .file-name { color: var(--fg); font-weight: 600; }
+.file-msg { font-size: .82rem; color: #B3261E; min-height: 0; }
+.file-msg:empty { display: none; }
+.form-note { grid-column: 1 / -1; font-size: .8rem; color: var(--muted); }
+.form .btn { grid-column: 1 / -1; justify-content: center; border: 0; cursor: pointer; font-family: inherit; }
+.form .btn[disabled] { opacity: .6; cursor: default; transform: none; }
+@media (max-width: 900px) { .contact-in { grid-template-columns: minmax(0, 1fr); } .contact-text { position: static; } }
+@media (max-width: 520px) { .f2 { grid-column: 1 / -1; } .file-grid { grid-template-columns: minmax(0, 1fr); } }
+
+/* Page de remerciement */
+.thanks { min-height: 100svh; display: flex; align-items: center; background: radial-gradient(110% 80% at 88% 8%, #A32F54 0%, var(--hero-bg) 52%, #4A0F22 100%); color: var(--hero-fg); padding-block: 8rem 5rem; }
+.thanks .eyebrow { color: var(--dore); }
+.thanks h1 { font-size: clamp(4rem, 16vw, 11rem); font-weight: 800; letter-spacing: -0.055em; line-height: .9; }
+.thanks .dot { color: var(--dore); }
+.thanks .lead { margin-bottom: 2.2rem; }
 
 /* Pied de page */
 .foot { background: var(--nuit); color: #A8949B; font-size: .82rem; }
