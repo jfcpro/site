@@ -85,10 +85,35 @@
       return ok;
     }
     inputs.forEach(function (i) { i.addEventListener('change', check); });
+    var GAS = form.getAttribute('data-envoi');
+    function lire(f) {
+      return new Promise(function (ok, ko) {
+        var r = new FileReader();
+        r.onload = function () { ok({ name: f.name, type: f.type, data: String(r.result).split(',')[1] }); };
+        r.onerror = ko; r.readAsDataURL(f);
+      });
+    }
     form.addEventListener('submit', function (e) {
       if (!check()) { e.preventDefault(); msg.scrollIntoView({ block: 'center' }); return; }
       var b = form.querySelector('button[type=submit]');
       b.disabled = true; b.querySelector('span').textContent = 'Envoi en cours…';
+      if (!GAS || !window.fetch || !window.FileReader) return; // secours : envoi classique
+      e.preventDefault();
+      var d = {};
+      form.querySelectorAll('input:not([type=file]):not([type=hidden]), select, textarea').forEach(function (i) { d[i.name] = i.value; });
+      var fs = [];
+      inputs.forEach(function (i) { if (i.files && i.files[0]) fs.push(lire(i.files[0])); });
+      Promise.all(fs).then(function (fichiers) {
+        d.fichiers = fichiers;
+        return fetch(GAS, { method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(d) });
+      }).then(function (r) { return r.json(); }).then(function (j) {
+        if (!j.ok) throw new Error(j.erreur || 'refus');
+        window.location.href = 'merci.html';
+      }).catch(function () {
+        b.disabled = false; b.querySelector('span').textContent = 'Envoyer ma demande';
+        msg.textContent = "L'envoi n'a pas abouti. Réessayez dans un instant ou écrivez-moi directement à info@jfcpro.org.";
+        msg.scrollIntoView({ block: 'center' });
+      });
     });
     window.addEventListener('pageshow', function () {
       var b = form.querySelector('button[type=submit]');
