@@ -19,6 +19,7 @@
   --hero-fg: #FFF7F8;
   --mark: #FCE7A8;
   --font: "Sora", "Segoe UI", system-ui, sans-serif;
+  --serif: "Instrument Serif", Georgia, "Times New Roman", serif;
   --ease: cubic-bezier(.2, .8, .2, 1);
 }
 @media (prefers-color-scheme: dark) {
@@ -95,8 +96,8 @@ h2 em { background: linear-gradient(var(--mark), var(--mark)) no-repeat 0 88% / 
 .hero h1 { font-size: clamp(3.3rem, 14.5vw, 10.5rem); font-weight: 800; letter-spacing: -0.055em; line-height: .9; margin-left: -.04em; }
 .hero h1 .line { display: block; overflow: hidden; padding-bottom: .12em; margin-bottom: -.12em; }
 .hero h1 .line > span { display: block; }
-.hero h1 em { color: transparent; -webkit-text-stroke: 2px var(--hero-fg); }
-.hero .dot { color: var(--dore); font-weight: 800; display: inline-block; }
+.hero h1 em { font-family: var(--serif); font-style: italic; font-weight: 400; letter-spacing: -0.02em; font-size: 1.12em; line-height: .8; color: var(--dore); }
+.hero .dot { color: var(--hero-fg); font-weight: 800; display: inline-block; }
 .hero .eyebrow { color: var(--dore); margin-bottom: 1.6rem; }
 .lead { font-size: clamp(1.05rem, 1.7vw, 1.3rem); max-width: 54ch; margin-top: 2rem; opacity: .93; }
 .hero-actions { display: flex; flex-wrap: wrap; gap: .8rem; margin-top: 2.3rem; }
@@ -108,6 +109,7 @@ h2 em { background: linear-gradient(var(--mark), var(--mark)) no-repeat 0 88% / 
 .btn-ghost { border: 1.5px solid rgba(255, 247, 248, .5); color: var(--hero-fg); }
 .btn-ghost:hover { background: var(--hero-fg); color: var(--bordeaux); border-color: var(--hero-fg); }
 .facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 1.5rem 2.5rem; margin: clamp(3rem, 7vh, 5rem) 0 0; padding-top: 1.7rem; border-top: 1px solid rgba(255, 247, 248, .22); max-width: 900px; }
+.facts dt [data-count] { font-family: var(--serif); font-style: italic; font-weight: 400; font-size: 1.5em; line-height: .8; }
 .facts dt { font-size: 1.5rem; font-weight: 700; color: var(--dore); letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
 .facts dd { margin: .25rem 0 0; font-size: .92rem; opacity: .85; }
 .scroll-cue { position: absolute; left: 50%; bottom: calc(18px + env(safe-area-inset-bottom, 0px)); width: 26px; height: 42px; margin-left: -13px; border: 1.5px solid rgba(255, 247, 248, .45); border-radius: 14px; z-index: 1; }
@@ -158,8 +160,10 @@ h2 em { background: linear-gradient(var(--mark), var(--mark)) no-repeat 0 88% / 
 .steps li::before { content: ""; position: absolute; left: calc(-2rem - 5px); top: 2.9rem; width: 13px; height: 13px; border-radius: 50%; background: var(--bg); border: 3px solid var(--line); transition: border-color .4s, background .4s, transform .4s var(--ease); }
 .steps li:first-child::before { top: 1.4rem; }
 .steps li.in::before { border-color: var(--dore); background: var(--dore); transform: scale(1.15); }
-.num { font-size: clamp(3rem, 6vw, 4.6rem); font-weight: 800; line-height: .85; letter-spacing: -0.05em; color: transparent; -webkit-text-stroke: 1.5px var(--bordeaux-2); transition: color .5s, -webkit-text-stroke-color .5s; font-variant-numeric: tabular-nums; }
-.steps li:hover .num { color: var(--dore); -webkit-text-stroke-color: var(--dore); }
+.num { font-family: var(--serif); font-style: italic; font-weight: 400; font-size: clamp(3.4rem, 6.6vw, 5.2rem); line-height: .8; letter-spacing: -0.02em; color: var(--bordeaux); transition: color .5s; min-width: 1.15em; }
+.steps li:hover .num { color: var(--dore-txt); }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .num { color: var(--bordeaux-2); } }
+:root[data-theme="dark"] .num { color: var(--bordeaux-2); }
 .steps h3 { font-size: 1.35rem; margin-bottom: .45rem; }
 .steps p { color: var(--muted); font-size: .98rem; }
 
@@ -261,7 +265,6 @@ h2 em { background: linear-gradient(var(--mark), var(--mark)) no-repeat 0 88% / 
 @media (max-width: 720px) {
   .nav a:not(.nav-cta) { display: none; }
   .brand small { display: none; }
-  .hero h1 em { -webkit-text-stroke-width: 1.5px; }
   .hero-ring { right: -38%; top: 34%; width: 118vw; }
   .steps { padding-left: 1.5rem; }
   .steps li { gap: 1rem; }
