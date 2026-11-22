@@ -147,3 +147,29 @@
     });
   }
 })();
+
+/* Catalogue : « Commander » choisit le cours dans le formulaire ; envoi au script Google, puis page Merci */
+(function () {
+  var f = document.getElementById('form-commande');
+  if (!f) return;
+  var sel = document.getElementById('k-cours'), msg = document.getElementById('k-msg');
+  var q = new URLSearchParams(location.search).get('cours');
+  if (q && sel.querySelector('option[value="' + q + '"]')) sel.value = q;
+  document.querySelectorAll('[data-cours]').forEach(function (b) {
+    b.addEventListener('click', function () { sel.value = b.getAttribute('data-cours'); setTimeout(function () { document.getElementById('k-nom').focus({ preventScroll: true }); }, 500); });
+  });
+  f.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var b = f.querySelector('button[type=submit]'), lab = b.querySelector('span');
+    b.disabled = true; lab.textContent = 'Envoi en cours…'; msg.textContent = '';
+    var d = {};
+    f.querySelectorAll('input:not([type=checkbox]), select, textarea').forEach(function (i) { d[i.name] = i.value; });
+    fetch(f.getAttribute('data-envoi'), { method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(d) })
+      .then(function (r) { return r.json(); })
+      .then(function (j) { if (!j.ok) throw new Error(j.erreur); location.href = 'merci-commande.html'; })
+      .catch(function () {
+        b.disabled = false; lab.textContent = 'Envoyer ma commande';
+        msg.textContent = "L'envoi n'a pas abouti. Réessayez dans un instant ou écrivez-moi à info@jfcpro.org.";
+      });
+  });
+})();
