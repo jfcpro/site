@@ -6,10 +6,13 @@
 <title>Jean-François Caddoux · Formation d'adultes · Création de cours</title>
 <meta name="description" content="Jean-François Caddoux, formation d'adultes et création de cours en Suisse romande. Des cours qui partent du travail réel, pour la branche électrique et les équipes techniques.">
 <link rel="icon" href="images/logo.svg" type="image/svg+xml">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&display=swap">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&display=swap">
 <link rel="stylesheet" href="style.css">
+<script>document.documentElement.classList.add("js")</script>
+<script src="script.js" defer></script>
 </head>
 <body>
+<div class="progress" aria-hidden="true"></div>
 <header class="top">
   <div class="wrap top-in">
     <a class="brand" href="#accueil" aria-label="Accueil">
@@ -17,7 +20,8 @@
       <span><b>Jean-François Caddoux</b><small>Formation d'adultes · Création de cours</small></span>
     </a>
     <nav class="nav" aria-label="Navigation principale">
-            <a href="#conception">Conception</a>
+            <a href="#conception">Démarche</a>
+      <a href="#livrables">Livrables</a>
       <a href="#apropos">À propos</a>
       <a class="nav-cta" href="#contact">Contact</a>
     </nav>
@@ -26,79 +30,97 @@
 
 <main>
 <section class="hero" id="accueil">
-  <svg class="hero-ring" viewBox="0 0 400 400" aria-hidden="true"><path d="M200 40 A160 160 0 1 0 360 200" fill="none" stroke="currentColor" stroke-width="58" stroke-linecap="round"/><circle cx="335" cy="68" r="30" class="hero-dot"/></svg>
+  <div class="hero-glow" aria-hidden="true"></div>
+  <svg class="hero-ring" viewBox="0 0 400 400" aria-hidden="true"><path pathLength="1" d="M200 40 A160 160 0 1 0 360 200" fill="none" stroke="currentColor" stroke-width="58" stroke-linecap="round"/><circle cx="335" cy="68" r="30" class="hero-dot"/></svg>
   <div class="wrap hero-in">
-    <p class="eyebrow">Suisse romande</p>
-    <h1>Apprendre<br>en faisant<span class="dot">.</span></h1>
-    <p class="lead">Des formations pour adultes et des cours conçus sur mesure, construits sur trente-cinq ans de terrain dans les réseaux électriques. Pour les entreprises de la branche, les écoles professionnelles et les équipes qui veulent transmettre leur savoir-faire.</p>
-    <div class="hero-actions">
-      <a class="btn btn-main" href="#contact">Parlons de votre projet</a>
+    <p class="eyebrow up" style="--d:0">Suisse romande · Formation d'adultes</p>
+    <h1 aria-label="Apprendre en faisant."><span class="line"><span>Apprendre</span></span><span class="line"><span>en <em>faisant</em><b class="dot">.</b></span></span></h1>
+    <p class="lead up" style="--d:5">Je transforme le savoir-faire de vos équipes en cours prêts à donner. Concepts andragogiques, cours et contenus sur mesure, construits sur trente-cinq ans de terrain dans les réseaux électriques.</p>
+    <div class="hero-actions up" style="--d:6">
+      <a class="btn btn-main" href="#contact"><span>Parlons de votre projet</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
       <a class="btn btn-ghost" href="#conception">Découvrir la démarche</a>
     </div>
     <dl class="facts">
-      <div><dt>35 ans</dt><dd>dans les réseaux électriques, du chantier à la direction</dd></div>
-      <div><dt>Maîtrise fédérale</dt><dd>d'électricien de réseau (2006)</dd></div>
-      <div><dt>Enseignant</dt><dd>en brevet et maîtrise fédérale, expert aux examens</dd></div>
+      <div data-r><dt><span data-count="35">35</span> ans</dt><dd>dans les réseaux électriques, du chantier à la direction</dd></div>
+      <div data-r style="--d:1"><dt>Maîtrise fédérale</dt><dd>d'électricien de réseau, obtenue en 2006</dd></div>
+      <div data-r style="--d:2"><dt>Enseignant</dt><dd>en brevet et maîtrise fédérale, expert aux examens</dd></div>
     </dl>
+  </div>
+  <a class="scroll-cue" href="#conception" aria-label="Aller à la démarche"><span></span></a>
+</section>
+
+<div class="marquee" aria-hidden="true"><div class="marquee-track"><span>Concept andragogique</span><i aria-hidden="true"></i><span>Scénario pédagogique</span><i aria-hidden="true"></i><span>Présentations</span><i aria-hidden="true"></i><span>Supports de cours</span><i aria-hidden="true"></i><span>Fiches à remplir</span><i aria-hidden="true"></i><span>Cahiers d’exercices</span><i aria-hidden="true"></i><span>Corrigés formateur</span><i aria-hidden="true"></i><span>Évaluation</span><i aria-hidden="true"></i><span>Concept andragogique</span><i aria-hidden="true"></i><span>Scénario pédagogique</span><i aria-hidden="true"></i><span>Présentations</span><i aria-hidden="true"></i><span>Supports de cours</span><i aria-hidden="true"></i><span>Fiches à remplir</span><i aria-hidden="true"></i><span>Cahiers d’exercices</span><i aria-hidden="true"></i><span>Corrigés formateur</span><i aria-hidden="true"></i><span>Évaluation</span><i aria-hidden="true"></i></div></div>
+
+
+<section class="band" id="conception">
+  <div class="wrap split">
+    <div class="sec-head sticky">
+      <p class="eyebrow" data-r>La démarche</p>
+      <h2 data-r style="--d:1">Votre savoir-faire, transformé en cours <em>prêt à donner</em>.</h2>
+      <p class="intro" data-r style="--d:2">Vous avez des experts, des procédures, un métier à transmettre. Je conçois avec vous le concept andragogique complet, puis je rédige le cours et tous ses supports, à vos couleurs ou aux miennes.</p>
+      <a class="link-arrow" data-r style="--d:3" href="#contact">Démarrer un projet <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    </div>
+    <ol class="steps">
+      <li data-r><span class="num" aria-hidden="true">01</span><div><h3>Analyser le besoin</h3><p>Qui apprend, pour faire quoi au poste de travail, avec quelle expérience. On part des situations réelles.</p></div></li>
+      <li data-r><span class="num" aria-hidden="true">02</span><div><h3>Fixer les objectifs</h3><p>Un objectif général et des objectifs spécifiques observables, formulés avec les bons verbes d'action.</p></div></li>
+      <li data-r><span class="num" aria-hidden="true">03</span><div><h3>Construire le scénario</h3><p>Déroulé minute par minute, alternance entre apports, exercices et retours d'expérience, adapté aux adultes.</p></div></li>
+      <li data-r><span class="num" aria-hidden="true">04</span><div><h3>Créer les contenus</h3><p>Présentation, support de cours, fiches, exercices et corrigés, cohérents entre eux et faciles à reprendre.</p></div></li>
+      <li data-r><span class="num" aria-hidden="true">05</span><div><h3>Évaluer et ajuster</h3><p>Questionnaire, bilan avec les formateurs et mise à jour du cours pour les sessions suivantes.</p></div></li>
+    </ol>
   </div>
 </section>
 
-
-<section class="band band-alt" id="conception">
-  <div class="wrap split">
+<section class="band band-dark" id="livrables">
+  <div class="wrap">
     <div class="sec-head">
-      <p class="eyebrow">Conception de cours et de contenus</p>
-      <h2>Votre savoir-faire, transformé en cours prêt à donner.</h2>
-      <p class="intro">Vous avez des experts, des procédures, un métier à transmettre. Je conçois avec vous le concept andragogique complet, puis je rédige le cours et tous ses supports, à vos couleurs ou aux miennes.</p>
-      <ul class="tags tags-dark">
-        <li>Présentations</li><li>Supports de cours</li><li>Fiches à remplir</li><li>Cahiers d'exercices</li><li>Corrigés formateur</li><li>Questionnaires d'évaluation</li>
-      </ul>
+      <p class="eyebrow" data-r>Les livrables</p>
+      <h2 data-r style="--d:1">Un cours complet, <em>pas seulement des diapositives</em>.</h2>
     </div>
-    <ol class="steps">
-      <li><h3>Analyser le besoin</h3><p>Qui apprend, pour faire quoi au poste de travail, avec quelle expérience. On part des situations réelles.</p></li>
-      <li><h3>Fixer les objectifs</h3><p>Un objectif général et des objectifs spécifiques observables, formulés avec les bons verbes d'action.</p></li>
-      <li><h3>Construire le scénario</h3><p>Déroulé minute par minute, alternance entre apports, exercices et retours d'expérience, adapté aux adultes.</p></li>
-      <li><h3>Créer les contenus</h3><p>Présentation, support de cours, fiches, exercices et corrigés, cohérents entre eux et faciles à reprendre.</p></li>
-      <li><h3>Évaluer et ajuster</h3><p>Questionnaire, bilan avec les formateurs et mise à jour du cours pour les sessions suivantes.</p></li>
-    </ol>
+    <div class="cards">
+      <article class="card" data-r><span class="card-n">A</span><h3>Concept andragogique</h3><p>Public, objectifs, méthodes et déroulé : la colonne vertébrale du cours, validée avec vous.</p></article>
+      <article class="card" data-r style="--d:1"><span class="card-n">B</span><h3>Présentation</h3><p>Des diapositives claires et dessinées, avec les notes et le minutage pour le formateur.</p></article>
+      <article class="card" data-r style="--d:2"><span class="card-n">C</span><h3>Support de cours</h3><p>Le document de référence que les participants gardent et retrouvent au travail.</p></article>
+      <article class="card" data-r><span class="card-n">D</span><h3>Fiches à remplir</h3><p>Des fiches pratiques à compléter pendant le cours, sur les cas réels des participants.</p></article>
+      <article class="card" data-r style="--d:1"><span class="card-n">E</span><h3>Exercices et corrigés</h3><p>Un cahier d'exercices progressif et son corrigé détaillé pour le formateur.</p></article>
+      <article class="card" data-r style="--d:2"><span class="card-n">F</span><h3>Évaluation</h3><p>Questionnaires, quiz de rappel et bilan pour mesurer ce qui a été appris.</p></article>
+    </div>
   </div>
 </section>
 
 <section class="band" id="apropos">
   <div class="wrap about">
-    <figure class="portrait">
+    <figure class="portrait" data-r>
       <div class="portrait-ph" role="img" aria-label="Emplacement de la photo de Jean-François Caddoux">
         <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M32 14 A18 18 0 1 0 50 32" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round"/><circle cx="47" cy="17" r="4" class="hero-dot"/></svg>
         <span>Photo à venir</span>
       </div>
     </figure>
     <div class="about-text">
-      <p class="eyebrow">À propos</p>
-      <h2>Du chantier à la direction, puis à la salle de cours.</h2>
-      <p>J'ai commencé comme électricien de réseau en 1990. CFC, brevet fédéral, puis maîtrise fédérale : j'ai été chef d'équipe, contremaître, responsable d'un groupe d'étude, chef de projet dans les énergies renouvelables, puis directeur d'une société de distribution et de production d'électricité.</p>
-      <p>En parallèle, j'enseigne aux futurs brevets et maîtrises de la branche et je suis expert aux examens. C'est là que j'ai trouvé ce que j'aime le plus : concevoir des cours, créer des contenus qui donnent envie d'apprendre et voir les adultes progresser.</p>
-      <ul class="tags">
-        <li>Maîtrise fédérale d'électricien de réseau</li>
-        <li>Formateur en entreprise</li>
-        <li>Enseignant brevet et maîtrise</li>
-        <li>Expert aux examens</li>
-        <li>Andragogue</li>
-      </ul>
+      <p class="eyebrow" data-r>À propos</p>
+      <h2 data-r style="--d:1">Du chantier à la direction, puis à la <em>salle de cours</em>.</h2>
+      <p data-r style="--d:2">J'ai commencé comme électricien de réseau en 1990. CFC, brevet fédéral, puis maîtrise fédérale : j'ai été chef d'équipe, contremaître, responsable d'un groupe d'étude, chef de projet dans les énergies renouvelables, puis directeur d'une société de distribution et de production d'électricité.</p>
+      <p data-r style="--d:3">En parallèle, j'enseigne aux futurs brevets et maîtrises de la branche et je suis expert aux examens. C'est là que j'ai trouvé ce que j'aime le plus : concevoir des cours, créer des contenus qui donnent envie d'apprendre et voir les adultes progresser.</p>
     </div>
+  </div>
+  <div class="wrap">
+    <ol class="path">
+      <li data-r><b>1990</b><span>Électricien de réseau, sur le terrain</span></li>
+      <li data-r style="--d:1"><b>Brevet</b><span>Chef d'équipe, puis contremaître</span></li>
+      <li data-r style="--d:2"><b>2006</b><span>Maîtrise fédérale d'électricien de réseau</span></li>
+      <li data-r style="--d:3"><b>Projets</b><span>Groupe d'étude et énergies renouvelables</span></li>
+      <li data-r style="--d:4"><b>Direction</b><span>Distribution et production d'électricité</span></li>
+      <li data-r style="--d:5" class="now"><b>Aujourd'hui</b><span>Enseignant, expert aux examens, créateur de cours</span></li>
+    </ol>
   </div>
 </section>
 
 <section class="contact" id="contact">
+  <svg class="contact-ring" viewBox="0 0 400 400" aria-hidden="true"><path d="M200 40 A160 160 0 1 0 360 200" fill="none" stroke="currentColor" stroke-width="58" stroke-linecap="round"/><circle cx="335" cy="68" r="30" class="hero-dot"/></svg>
   <div class="wrap contact-in">
-    <div>
-      <p class="eyebrow">Contact</p>
-      <h2>Un cours à créer ou une formation à donner&nbsp;?</h2>
-      <p class="intro">Écrivez-moi. Je réponds en général sous 48 heures et le premier entretien est sans engagement.</p>
-    </div>
-    <div class="coords">
-      <a class="coord" href="mailto:info@jfcpro.org"><span>E-mail</span>info@jfcpro.org</a>
-      <p class="coord"><span>Région</span>Suisse romande</p>
-    </div>
+    <p class="eyebrow" data-r>Contact</p>
+    <h2 data-r style="--d:1">Un cours à créer ou une formation à donner&nbsp;?</h2>
+    <a class="mail" data-r style="--d:2" href="mailto:info@jfcpro.org"><span>info@jfcpro.org</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    <p class="intro" data-r style="--d:3">Écrivez-moi. Je réponds en général sous 48 heures et le premier entretien est sans engagement. J'interviens dans toute la Suisse romande.</p>
   </div>
 </section>
 </main>
