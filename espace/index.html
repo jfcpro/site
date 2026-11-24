@@ -25,7 +25,12 @@ small{display:block;margin-top:28px;opacity:.6;font-size:12px}
   <h1>Espace privé</h1>
   <p>Accès réservé. La connexion se fait avec le compte Google autorisé.</p>
   <a class="btn" id="ouvrir" href="https://script.google.com/macros/s/A_REMPLACER/exec">Ouvrir l'application</a>
+  <p id="attente" hidden style="margin:22px 0 0;font-size:13.5px">L'application est en cours d'installation. En attendant, tu peux <a href="app.html" style="color:#F2B705">voir la démonstration</a> (données fictives).</p>
   <small>© 2026 Jean-François Caddoux · jfcpro.org</small>
 </div>
+<script>
+/* Tant que l'adresse du script Google n'est pas renseignée, le bouton ne mène nulle part. */
+(function(){var b=document.getElementById("ouvrir");if(b.href.indexOf("A_REMPLACER")>-1){b.removeAttribute("href");b.textContent="Installation en cours";b.style.opacity=".6";b.style.cursor="default";document.getElementById("attente").hidden=false;}})();
+</script>
 </body>
 </html>
