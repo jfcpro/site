@@ -147,6 +147,11 @@ dialog h3{margin:0 0 4px;font-size:18px}
 <dialog id="dlg"><form method="dialog" id="dlgForm"></form></dialog>
 
 <script>
+/* Affiche toute erreur dans la page (utile dans l'application Google, sans console). */
+window.addEventListener("error", function(e){ var v=document.getElementById("vue"); if(v) v.innerHTML='<div style="padding:16px;border-radius:12px;background:#F6E6EA;color:#7B1E3A;font-size:14px">Erreur de l\'application : '+String(e.message||e.error||"inconnue").replace(/</g,"&lt;")+'</div>'; });
+</script>
+<script>
+(function(){
 "use strict";
 /* ===================== Accès serveur ===================== */
 const ENLIGNE = typeof google !== "undefined" && google.script && google.script.run;
@@ -492,6 +497,7 @@ async function charger(){
   try { S.vue = sessionStorage.getItem("planb-vue") || "accueil"; } catch(e){}
   menu();
   charger().catch(e => { $("#vue").innerHTML = `<div class="etat err">Impossible de charger les données : ${esc(e.message||e)}</div>`; });
+})();
 })();
 </script>
 </body>
